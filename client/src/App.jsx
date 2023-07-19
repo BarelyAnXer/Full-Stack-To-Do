@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     const start = async () => {
       let temp = await axios.get("http://localhost:3000/tasks/")
-      setTasks(temp.data)
+      setTasks(temp.data.data)
       console.log(temp.data)
     }
 
@@ -48,7 +48,7 @@ function App() {
       <label>body</label>
       <input type="text" onChange={(event) => setBody(event.target.value)} value={body} /><br />
 
-      <button onClick={createTask}>click</button>
+      <button onClick={createTask}>insert</button>
       <button onClick={tester}>tester</button>
       <br />
       {

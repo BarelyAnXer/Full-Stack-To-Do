@@ -19,6 +19,6 @@ app.get('/', (req, res) => {
 app.use('/tasks', taskRoutes)
 
 
-app.listen(PORT, () => {
+app.listen(PORT, (error) => {
   console.log(`Example app listening on port ${PORT}`)
 })

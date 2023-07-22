@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from "axios"
-
+import { Register } from './Components/Register'
+import Login from './Components/Login'
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
 
-  const createTask = async () => {
+  const inserTask = async () => {
     try {
       const response = await axios.post("http://localhost:3000/tasks/", { title, body })
       console.log(response.data)
@@ -28,13 +29,12 @@ function App() {
   }
 
   useEffect(() => {
-    const start = async () => {
+    const getTasks = async () => {
       let temp = await axios.get("http://localhost:3000/tasks/")
       setTasks(temp.data.data)
-      console.log(temp.data)
     }
 
-    start()
+    getTasks()
 
   }, [])
 
@@ -43,25 +43,32 @@ function App() {
 
   return (
     <>
+      <Register />
+      <Login />
+
+
+<br />
+<br />
+<br />
+
+<br />
       <label>title</label>
       <input type="text" onChange={(event) => setTitle(event.target.value)} value={title} /><br />
       <label>body</label>
       <input type="text" onChange={(event) => setBody(event.target.value)} value={body} /><br />
 
-      <button onClick={createTask}>insert</button>
+      <button onClick={inserTask}>insert</button>
       <button onClick={tester}>tester</button>
       <br />
-      {
-        tasks?.map((task) => {
-          return (
-            <div key={task._id}>
-              <h3>{task.title}</h3>
-              <p>{task.body}</p>
-              <p>{task._id}</p>
-            </div>
-          )
-        })
-      }
+      {tasks?.map((task) => {
+        return (
+          <div key={task._id}>
+            <h3>{task.title}</h3>
+            <p>{task.body}</p>
+            <p>{task._id}</p>
+          </div>
+        )
+      })}
 
 
     </>

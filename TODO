@@ -8,10 +8,13 @@ write to read the api conventions used like for status what are possible values 
 
 
 
-database
-backend api crud
+database (schema) 
+backend api crud - can test via postman without frontend
+?? (database validation error handling??)
 frontend sending request
 state management
+
+
 
 
 
@@ -21,3 +24,5 @@ state management
 update many task to learn how to do many update
 * selecting multiple task then updating it  
 
+
+light mode dark mode?

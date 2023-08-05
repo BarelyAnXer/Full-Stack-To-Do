@@ -1,20 +1,19 @@
 import { useState } from 'react';
+import styles from "./Login.module.css"
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-
-        
         console.log('Username:', username);
         console.log('Password:', password);
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form>
+        <div className={styles.container}>
+            <h2>Create an Account</h2>
+            <form >
                 <div>
                     <label>Username:</label>
                     <input

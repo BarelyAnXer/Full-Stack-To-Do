@@ -18,8 +18,38 @@ app.get('/', (req, res) => {
 
 app.use('/tasks', taskRoutes)
 
-app.post("/login", )
+app.post("/login", (req, res) => {
+  const { name, email, password } = req.body;
 
+  // can probably use here the thing ive used before
+  if (!name || !email || !password) {
+    res.status(400).send({
+      "status": "error",
+      "message": "Failed to save task",
+      "error": "Please add all fields"
+    });
+  }
+  
+
+
+
+
+
+  
+
+})
+
+app.post("/register", (req, res) => {
+  const { name, email, password } = req.body;
+
+
+})
+
+app.post("/logout", (req, res) => {
+  const { name, email, password } = req.body;
+
+
+})
 
 app.listen(PORT, (error) => {
   console.log(`Example app listening on port ${PORT}`)

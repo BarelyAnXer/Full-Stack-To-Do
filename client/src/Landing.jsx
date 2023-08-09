@@ -2,7 +2,7 @@ import React from 'react'
 import { useGetAllNotesQuery } from './app/api/notesApiSlice'
 
 const Testing = () => {
-  const { data, u, isLoading } = useGetAllNotesQuery()
+  const { data, isError, isLoading } = useGetAllNotesQuery()
 
 
   if (isLoading) {

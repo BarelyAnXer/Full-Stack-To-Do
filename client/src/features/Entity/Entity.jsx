@@ -1,8 +1,24 @@
 import React from 'react'
+import { FaEdit } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
-const Entity = () => {
+const Entity = ({ entity }) => {
+  const { id, title, completed } = entity
   return (
-    <div>Entity</div>
+    <>
+      <tr>
+        <td>{id}</td>
+        <td>{title}</td>
+        <td>{String(completed)}</td>
+        <td>
+          <Link to={`/notes/${id}`}>
+            <FaEdit />
+          </Link>
+
+        </td>
+      </tr>
+
+    </>
   )
 }
 

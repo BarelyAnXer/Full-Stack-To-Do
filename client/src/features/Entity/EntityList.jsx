@@ -27,9 +27,14 @@ const EntityList = () => {
           </tr>
         </thead>
         <tbody>
-          {notes.map((entity) => {
-            return <Entity key={entity.id} entity={entity}/>
+          {notes.data.map((entity) => {
+            return <Entity key={entity._id} entity={entity}/>
           })}
+          
+          {/* {notes.map((entity) => {
+            return <Entity key={entity.id} entity={entity}/>
+          })} */}
+          
         </tbody>
         <tfoot>
           <tr>

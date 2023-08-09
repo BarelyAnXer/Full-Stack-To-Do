@@ -3,14 +3,25 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const notesApi = createApi({
     reducerPath: "notesApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "https://jsonplaceholder.typicode.com" }),
+    tagTypes: ['Tasks'],
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
     endpoints: (builder) => ({
         getAllNotes: builder.query({
-            query: () => "todos"
+            query: () => "tasks",
+            providesTags: ['Tasks']
+            // query: (limit = 10) => `todos?_limit=${limit}`,
+
+        }),
+        deleteNote: builder.mutation({
+            query: (id) => ({
+                url: `tasks/${id}`,
+                method: "DELETE"
+            }),
+            invalidatesTags: ['Tasks']
         }),
 
     })
 })
 
 
-export const { useGetAllNotesQuery } = notesApi
+export const { useGetAllNotesQuery, useDeleteNoteMutation } = notesApi

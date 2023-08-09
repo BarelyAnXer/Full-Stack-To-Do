@@ -11,19 +11,16 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<Landing />}></Route>
+        <Route index element={<Landing />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
 
-
-        <Route path='/notes' >
+        <Route path='/notes'>
           <Route index element={<EntityList />} />
-          <Route route='/:id' element={<EntityEditForm />} />
-          <Route route='/new' element={<p>asd</p>} />
+          <Route path=':id' element={<EntityEditForm />} />
+          {/* <Route path='/new' element={<p>asd</p>} /> */}
         </Route>
-        <Route path='/test' element={<EntityEditForm />} />
-
-
+      
       </Routes>
     </>
   )

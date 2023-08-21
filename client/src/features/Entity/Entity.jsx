@@ -9,7 +9,9 @@ const Entity = ({ entity }) => {
   const [deleteNote, { isLoading }] = useDeleteNoteMutation();
   const navigate = useNavigate()
 
-
+  if (isLoading) {
+    return <p>loading ...</p>
+  }
 
   return (
     <>

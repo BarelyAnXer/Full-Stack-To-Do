@@ -13,12 +13,12 @@ export const notesApi = createApi({
             providesTags: ['Tasks']
             // query: (limit = 10) => `todos?_limit=${limit}`,
         }),
-        // getOneNote: builder.query({
-        //     query: (id) => ({
-        //         url: `tasks/${id}`,
-        //         method: "GET"
-        //     }),
-        // }),
+        getOneNote: builder.query({
+            query: (id) => ({
+                url: `tasks/${id}`,
+                method: "GET"
+            }),
+        }),
         deleteNote: builder.mutation({
             query: (id) => ({
                 url: `tasks/${id}`,
@@ -38,7 +38,7 @@ export const notesApi = createApi({
         }),
         updateNote: builder.mutation({
             query: (initialUserData) => ({
-                url: '/tasks',
+                url: `/tasks/${initialUserData.id}`,
                 method: 'PUT',
                 body: {
                     ...initialUserData,
@@ -56,20 +56,5 @@ export const {
     useDeleteNoteMutation,
     useAddNoteMutation,
     useUpdateNoteMutation,
-    // useGetOneNoteQuery
+    useGetOneNoteQuery
 } = notesApi
-
-const notesAdapter = createEntityAdapter({
-    // Assuming your note entity has an 'id' field
-    selectId: (note) => {
-        console.log(note)
-        return note._id
-    },
-});
-
-const notesSelectors = notesAdapter.getSelectors((state) => state.notesApi);
-
-export const selectNoteById = createSelector(
-    [notesSelectors.selectById],
-    (note) => note
-);
